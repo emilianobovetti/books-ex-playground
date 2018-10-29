@@ -19,7 +19,13 @@ defmodule GraphQL.Book.Schema do
     end
 
     field :books, list_of(:book) do
-      arg :query, type: non_null(:string)
+      arg :query, type: :string
+
+      arg :title, type: :string
+      arg :author, type: :string
+      arg :publisher, type: :string
+      arg :subject, type: :string
+
       arg :max_results, type: :integer
       arg :start_index, type: :integer
 
@@ -31,6 +37,7 @@ defmodule GraphQL.Book.Schema do
     field :id, :id
     field :title, :string
     field :description, :string
+    field :authors, list_of(:string)
     field :page_count, :integer
     field :average_rating, :float
     field :is_ebook, :boolean

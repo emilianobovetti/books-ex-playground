@@ -11,6 +11,7 @@ defmodule Book do
   schema "book" do
     field :title, :string
     field :description, :string
+    field :authors, {:array, :string}
     field :page_count, :integer
     field :average_rating, :float
     field :is_ebook, :boolean
@@ -23,6 +24,7 @@ defmodule Book do
       id: data["id"],
       title: volume_info["title"],
       description: volume_info["description"],
+      authors: volume_info["authors"],
       page_count: volume_info["pageCount"],
       average_rating: volume_info["averageRating"],
       is_ebook: volume_info["isEbook"]
