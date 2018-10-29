@@ -1,16 +1,29 @@
 defmodule GraphQL.Book.Schema do
   use Absinthe.Schema
 
-  query do
-    @desc "Get a book from GoogleAPIs"
-    field :google_book, :book do
+  def resolver(params, _) do
+    GoogleBooksAPI.Repo.get_by Book, params
+  end
 
-      @desc "The book ID"
+  query do
+    field :book_by_id, :book do
       arg :id, type: non_null(:id)
 
-      resolve fn %{id: id}, _ ->
-        GoogleBooksAPI.Repo.get Book, id
-      end
+      resolve &resolver/2
+    end
+
+    field :book_by_isbn, :book do
+      arg :isbn, type: non_null(:string)
+
+      resolve &resolver/2
+    end
+
+    field :books, list_of(:book) do
+      arg :query, type: non_null(:string)
+      arg :max_results, type: :integer
+      arg :start_index, type: :integer
+
+      resolve &resolver/2
     end
   end
 
