@@ -12,7 +12,6 @@ config :books,
 # Configures the endpoint
 config :books, BooksWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "iAoFMg8LeAPKHWN6J5gnJbRVX2plebmHz8ZswHzHDqVbdt429jDfAys2cY1+IZNV",
   render_errors: [view: BooksWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Books.PubSub,
            adapter: Phoenix.PubSub.PG2]
@@ -21,6 +20,12 @@ config :books, BooksWeb.Endpoint,
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:user_id]
+
+# Use Jason for JSON parsing in Phoenix
+config :phoenix, json_library: Jason
+
+# Use Jason in Mariaex
+config :mariaex, json_library: Jason
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

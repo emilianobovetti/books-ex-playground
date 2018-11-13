@@ -24,9 +24,11 @@ defmodule BooksWeb.Router do
   #   pipe_through :api
   # end
   forward "/api", Absinthe.Plug,
-    schema: GraphQL.Book.Schema
+    schema: GraphQL.Book.Schema,
+    json_codec: Jason
 
   forward "/graphiql", Absinthe.Plug.GraphiQL,
     schema: GraphQL.Book.Schema,
+    json_codec: Jason,
     interface: :playground # :advanced :simple :playground
 end

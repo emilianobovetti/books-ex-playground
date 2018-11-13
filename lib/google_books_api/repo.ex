@@ -8,7 +8,7 @@ defmodule GoogleBooksAPI.Repo do
   defp do_api_fetch!(url) when is_binary(url) do
     response = HTTPoison.get! url
 
-    Map.put response, :json, Poison.decode!(response.body)
+    Map.put response, :json, Jason.decode!(response.body)
   end
 
   defp api_fetch!(%{id: id}) do
