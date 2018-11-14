@@ -4,8 +4,8 @@ defmodule Books.Mixfile do
   def project do
     [
       app: :books,
-      version: "0.0.1",
-      elixir: "~> 1.4",
+      version: "0.1.0",
+      elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env),
       compilers: [:phoenix, :gettext] ++ Mix.compilers,
       start_permanent: Mix.env == :prod,
@@ -36,15 +36,15 @@ defmodule Books.Mixfile do
       {:phoenix, "~> 1.4.0"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
+      {:ecto_sql, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:gettext, "~> 0.11"},
+      {:jason, "~> 1.1"},
+      {:plug_cowboy, "~> 2.0"},
       {:absinthe, "~> 1.4"},
       {:absinthe_plug, "~> 1.4"},
-      {:ecto_sql, "~> 3.0"},
-      {:jason, "~> 1.1"},
       {:mariaex, "~> 0.9"},
-      {:gettext, "~> 0.16"},
-      {:httpoison, "~> 1.4"},
-      {:plug_cowboy, "~> 2.0"}
+      {:httpoison, "~> 1.4"}
     ]
   end
 
